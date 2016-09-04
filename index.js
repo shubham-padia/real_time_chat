@@ -10,7 +10,9 @@ app.get('/',function(req,res){
 app.use(express.static('public'));
 
 io.on('connection', function(socket){
-    console.log('revealo');
+    socket.on('chat message', function(msg){
+        console.log('message: ' + msg);
+    });
 });
 
 http.listen(3000, function(){
